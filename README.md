@@ -54,3 +54,82 @@
     ├── Dockerfile                 # Docker image definition
     ├── requirements.txt           # Dependencies
     └── README.md                  # Documentation
+
+# User Management API
+
+A FastAPI application for user management with role-based access control.
+
+## Features
+
+- User authentication with JWT
+- Role-based access control
+- PostgreSQL database with async support
+- Docker and Docker Compose setup
+
+## Getting Started with Docker
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+
+### Running the Application
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
+
+2. Start the application with Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+This will start both the FastAPI application and PostgreSQL database.
+
+3. Access the application:
+
+- API: http://localhost:8000
+- Swagger UI Documentation: http://localhost:8000/docs
+- ReDoc Documentation: http://localhost:8000/redoc
+
+### Development Mode
+
+The default Docker Compose setup includes volume mapping and reload support, allowing for real-time code changes.
+
+### Environment Variables
+
+You can customize the application by setting environment variables in the `docker-compose.yml` file:
+
+- `DATABASE_URL`: PostgreSQL connection string
+- `SECRET_KEY`: Secret key for JWT token generation
+- `DEBUG`: Enable/disable debug mode
+
+## API Documentation
+
+Once the application is running, you can access the API documentation at:
+
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+## Database Schema
+
+The application uses PostgreSQL with SQLAlchemy ORM. The database schema includes:
+
+- Users table with role-based access control
+
+## Default Super Admin
+
+A default super admin user is created on first startup:
+
+- Username: admin
+- Password: adminpassword
+
+**Important:** Change the default admin password in production!
+
+## License
+
+[Your License]
