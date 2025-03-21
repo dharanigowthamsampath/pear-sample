@@ -1,6 +1,12 @@
 from fastapi import HTTPException, status
 
 
+class APIException(HTTPException):
+    """Base exception for API-related errors with status code and detail message."""
+    def __init__(self, status_code: int, detail: str):
+        super().__init__(status_code=status_code, detail=detail)
+
+
 class DatabaseError(Exception):
     """Base exception for database-related errors."""
     pass

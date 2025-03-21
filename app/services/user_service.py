@@ -8,7 +8,7 @@ import uuid
 from app.models.user import UserModel
 from app.schemas.user import UserCreate, UserUpdate, User
 from app.core.security import get_password_hash, verify_password
-from app.core.roles import UserRole, check_create_permission
+from app.core.roles import UserRole, check_role_permissions
 
 async def get_user_by_id(db: AsyncSession, user_id: str) -> Optional[User]:
     """Get a user by ID"""
@@ -51,7 +51,7 @@ async def create_new_user(
 ) -> User:
     """Create a new user"""
     # Check if current user can create a user with given role
-    if not check_create_permission(current_user.role, user_data.role):
+    if not check_role_permissions(current_user.role, user_data.role):
         raise ValueError(f"User with role {current_user.role} cannot create user with role {user_data.role}")
     
     # Check if username or email already exists
